@@ -75,11 +75,8 @@
             <Font name="Monospaced Regular" size="187.0" />
           </font>
         </Label>
-            <Label fx:id="nextTurnLabel" alignment="BASELINE_RIGHT" centerShape="false" contentDisplay="RIGHT" prefHeight="50.0" scaleShape="false" styleClass="next-turn-label" textAlignment="RIGHT" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </Label>
+            <Label fx:id="talkerLabel" alignment="CENTER" prefHeight="50.0" styleClass="next-turn-label" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="413.0" />
+            <Label fx:id="nextTurnLabel" alignment="CENTER" prefHeight="50.0" styleClass="next-turn-label" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="413.0" AnchorPane.rightAnchor="0.0" />
             <Button fx:id="startButton" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" opacity="0.0" snapToPixel="false" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
