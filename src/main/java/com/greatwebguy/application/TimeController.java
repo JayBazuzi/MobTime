@@ -61,7 +61,10 @@ public class TimeController implements Initializable {
 	@FXML // fx:id="turnLabel"
 	private Label turnLabel;
 
-	@FXML // fx:id="turnLabel"
+	@FXML // fx:id="talkerLabel"
+	private Label talkerLabel;
+
+	@FXML // fx:id="nextTurnLabel"
 	private Label nextTurnLabel;
 
 	@FXML
@@ -87,7 +90,8 @@ public class TimeController implements Initializable {
 
 		timerLabel.textProperty().bind(timeMinutes);
 		turnLabel.textProperty().bind(Settings.instance().userMessage);
-		nextTurnLabel.textProperty().bind(Settings.instance().nextUserMessage);
+		talkerLabel.textProperty().bind(Settings.instance().talkerMessage);
+		nextTurnLabel.textProperty().bind(Settings.instance().upNextMessage);
 		bottomPane.styleProperty().bind(paneColor);
 		Settings.instance().updateUserDisplay();
 

@@ -24,7 +24,9 @@ public class Settings {
 	protected ObservableList<People> users = FXCollections.observableArrayList();
 	protected StringProperty userMessage = new SimpleStringProperty("");
 	protected StringProperty nextUserMessage = new SimpleStringProperty("");
-	protected StringProperty userName = new SimpleStringProperty("MobTime");
+	protected StringProperty talkerMessage = new SimpleStringProperty("");
+	protected StringProperty upNextMessage = new SimpleStringProperty("");
+	protected StringProperty userName= new SimpleStringProperty("MobTime");
 
 	private Settings() {
 		//
@@ -107,12 +109,32 @@ public class Settings {
 		People user = getUser(getCurrentUser() + 1);
 		if (user == null) {
 			nextUserMessage.set("");
+			talkerMessage.set("");
+			upNextMessage.set("");
 			return;
 		}
 		if (isBreak(user)) {
 			user = getUser(getCurrentUser() + 2);
 		}
 		nextUserMessage.set(">> " + user.getName());
+
+		// Talker is the person after the typer; "Next" is the one after the talker.
+		// Breaks are not people, so they are skipped.
+		int index = getCurrentUser() + 1;
+		People talker = nextNonBreak(index);
+		talkerMessage.set(talker == null ? "" : "Talker: " + talker.getName());
+		People upNext = talker == null ? null : nextNonBreak(users.indexOf(talker) + 1);
+		upNextMessage.set(upNext == null ? "" : "Next: " + upNext.getName());
+	}
+
+	private People nextNonBreak(int startIndex) {
+		for (int i = 0; i < users.size(); i++) {
+			People candidate = getUser(startIndex + i);
+			if (!isBreak(candidate)) {
+				return candidate;
+			}
+		}
+		return null;
 	}
 
 	private boolean isBreak(People user) {
@@ -136,7 +158,7 @@ public class Settings {
 			userName.set("Break");
 		} else {
 			String name = user.getName();
-			userMessage.set(name + "'s Turn");
+			userMessage.set("Typer: " + name);
 			userName.set(name);
 		}
 	}
